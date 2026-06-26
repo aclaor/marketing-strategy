@@ -1,0 +1,384 @@
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0f0f0f;color:#fff;}
+.slides-wrap{display:flex;flex-direction:column;gap:32px;padding:24px;}
+.slide{width:600px;height:340px;border-radius:20px;position:relative;overflow:hidden;flex-shrink:0;margin:0 auto;}
+.slide-label{text-align:center;font-size:11px;color:#555;margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;}
+.download-hint{text-align:center;font-size:11px;color:#555;margin-top:8px;}
+
+/* Slide 1 — Hero */
+.s1{background:linear-gradient(135deg,#1a0a2e,#2d1060,#1a0a2e);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;}
+.s1 .tag{background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.4);color:#c084fc;font-size:11px;padding:4px 14px;border-radius:20px;letter-spacing:1px;margin-bottom:16px;}
+.s1 h1{font-size:36px;font-weight:800;background:linear-gradient(135deg,#fff,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.15;margin-bottom:8px;}
+.s1 p{font-size:14px;color:#9d78d4;max-width:380px;}
+.s1 .dots{position:absolute;width:100%;height:100%;top:0;left:0;background-image:radial-gradient(rgba(168,85,247,0.15) 1px,transparent 1px);background-size:28px 28px;}
+
+/* Slide 2 — Time saved stat */
+.s2{background:#0d1117;border:1px solid #1e2a3a;display:grid;grid-template-columns:1fr 1fr;padding:0;}
+.s2-left{background:linear-gradient(160deg,#0a1628,#0d2040);padding:36px;display:flex;flex-direction:column;justify-content:center;}
+.s2-left h2{font-size:64px;font-weight:900;color:#fff;line-height:1;}
+.s2-left .unit{font-size:20px;color:#38bdf8;margin-top:4px;}
+.s2-left p{font-size:13px;color:#607a99;margin-top:12px;line-height:1.6;}
+.s2-right{padding:28px;display:flex;flex-direction:column;justify-content:space-between;}
+.s2-stat{background:#131926;border:1px solid #1e2a40;border-radius:12px;padding:16px;}
+.s2-stat .num{font-size:28px;font-weight:800;color:#a855f7;}
+.s2-stat .lbl{font-size:11px;color:#607a99;margin-top:2px;}
+
+/* Slide 3 — Platform coverage */
+.s3{background:#fff;color:#111;padding:36px;}
+.s3 h2{font-size:18px;font-weight:700;color:#111;margin-bottom:4px;}
+.s3 p{font-size:12px;color:#888;margin-bottom:20px;}
+.platforms{display:flex;flex-wrap:wrap;gap:8px;}
+.plat{background:#f5f5f5;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:600;color:#333;display:flex;align-items:center;gap:6px;}
+.plat .dot{width:8px;height:8px;border-radius:50%;}
+.s3 .bottom{margin-top:16px;background:linear-gradient(135deg,#7c3aed,#a855f7);border-radius:12px;padding:14px 20px;color:#fff;font-size:13px;font-weight:600;}
+
+/* Slide 4 — How it works */
+.s4{background:#0d0d0d;padding:36px;}
+.s4 h2{font-size:18px;font-weight:700;color:#fff;margin-bottom:20px;}
+.steps{display:flex;gap:0;align-items:center;}
+.step-box{flex:1;text-align:center;}
+.step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;margin:0 auto 8px;}
+.step-title{font-size:11px;font-weight:700;color:#fff;margin-bottom:4px;}
+.step-desc{font-size:10px;color:#607a99;line-height:1.5;}
+.step-arrow{color:#a855f7;font-size:20px;flex-shrink:0;margin:0 4px;margin-bottom:20px;}
+
+/* Slide 5 — ROI chart */
+.s5{background:#fff;padding:32px;}
+.s5 h2{font-size:16px;font-weight:700;color:#111;margin-bottom:2px;}
+.s5 p{font-size:11px;color:#888;margin-bottom:16px;}
+.bar-chart{display:flex;align-items:flex-end;gap:12px;height:140px;}
+.bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;}
+.bar{width:100%;border-radius:6px 6px 0 0;position:relative;}
+.bar-val{font-size:10px;font-weight:700;margin-bottom:4px;}
+.bar-lbl{font-size:9px;color:#888;margin-top:6px;text-align:center;}
+
+/* Slide 6 — AI features */
+.s6{background:linear-gradient(135deg,#0a0a1a,#0d0d2a);padding:32px;}
+.s6 h2{font-size:17px;font-weight:700;color:#fff;margin-bottom:16px;}
+.features-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.feat{background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);border-radius:12px;padding:14px;}
+.feat-icon{font-size:20px;margin-bottom:6px;}
+.feat-title{font-size:11px;font-weight:700;color:#e9d5ff;margin-bottom:3px;}
+.feat-desc{font-size:10px;color:#9d78d4;line-height:1.4;}
+
+/* Slide 7 — Comparison */
+.s7{background:#fff;padding:32px;}
+.s7 h2{font-size:17px;font-weight:700;color:#111;margin-bottom:14px;}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.compare-col{border-radius:12px;padding:16px;}
+.compare-col.bad{background:#fef2f2;border:1px solid #fecaca;}
+.compare-col.good{background:linear-gradient(135deg,#f5f0ff,#ede9fe);border:1px solid #c4b5fd;}
+.compare-col h3{font-size:12px;font-weight:700;margin-bottom:10px;}
+.compare-col.bad h3{color:#dc2626;}
+.compare-col.good h3{color:#7c3aed;}
+.ci{font-size:11px;margin-bottom:6px;display:flex;align-items:center;gap:6px;color:#555;}
+.ci.good-item{color:#333;}
+
+/* Slide 8 — Growth chart */
+.s8{background:#0d0d14;padding:32px;}
+.s8 h2{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
+.s8 p{font-size:11px;color:#607a99;margin-bottom:16px;}
+.line-chart{position:relative;height:160px;width:100%;}
+
+/* Slide 9 — Pricing */
+.s9{background:linear-gradient(135deg,#1a0a2e,#0d0d14);padding:32px;}
+.s9 h2{font-size:17px;font-weight:700;color:#fff;margin-bottom:14px;text-align:center;}
+.plans{display:flex;gap:10px;}
+.plan-c{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;text-align:center;}
+.plan-c.popular{background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(124,58,237,0.2));border-color:rgba(168,85,247,0.5);}
+.plan-c .badge{font-size:9px;background:rgba(168,85,247,0.3);color:#c084fc;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:8px;}
+.plan-c .price{font-size:28px;font-weight:900;color:#fff;}
+.plan-c .price span{font-size:12px;font-weight:400;color:#607a99;}
+.plan-c .plan-name{font-size:11px;color:#9d78d4;margin-bottom:10px;}
+.plan-c .plan-feat{font-size:10px;color:#9d78d4;line-height:1.8;}
+
+/* Slide 10 — CTA */
+.s10{background:linear-gradient(135deg,#7c3aed,#a855f7,#6d28d9);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;}
+.s10 h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:8px;line-height:1.2;}
+.s10 p{font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:20px;}
+.cta-btn{background:#fff;color:#7c3aed;font-size:14px;font-weight:800;padding:12px 32px;border-radius:50px;display:inline-block;}
+.s10 .sub{font-size:11px;color:rgba(255,255,255,0.6);margin-top:10px;}
+</style>
+
+<div class="slides-wrap">
+
+<!-- Slide 1 -->
+<div>
+<div class="slide-label">Slide 1 of 10 — Cover</div>
+<div class="slide s1">
+  <div class="dots"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="tag">SOCIAL MEDIA AUTOMATION</div>
+    <h1>Stop posting manually.<br>Start growing.</h1>
+    <p>Autopostleey posts to 13 platforms automatically — so you focus on your business, not social media.</p>
+  </div>
+</div>
+<div class="download-hint">Right-click → Save image / Screenshot to copy</div>
+</div>
+
+<!-- Slide 2 -->
+<div>
+<div class="slide-label">Slide 2 of 10 — Time Saved</div>
+<div class="slide s2">
+  <div class="s2-left">
+    <div style="font-size:12px;color:#38bdf8;letter-spacing:1px;margin-bottom:8px;">TIME SAVED PER MONTH</div>
+    <div style="font-size:72px;font-weight:900;color:#fff;line-height:1;">20<span style="font-size:36px;color:#a855f7;">hrs</span></div>
+    <p>The average business owner spends 20+ hours per month on social media. Autopostleey automates 100% of it.</p>
+  </div>
+  <div class="s2-right">
+    <div class="s2-stat">
+      <div class="num">13</div>
+      <div class="lbl">Platforms connected</div>
+    </div>
+    <div class="s2-stat">
+      <div class="num">∞</div>
+      <div class="lbl">Posts per month (Pro)</div>
+    </div>
+    <div class="s2-stat">
+      <div class="num">$0</div>
+      <div class="lbl">Social media manager cost</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Slide 3 -->
+<div>
+<div class="slide-label">Slide 3 of 10 — Platforms</div>
+<div class="slide s3">
+  <h2>Post everywhere. At once.</h2>
+  <p>One post → 13 platforms simultaneously, no extra work</p>
+  <div class="platforms">
+    <div class="plat"><div class="dot" style="background:#1877f2;"></div>Facebook</div>
+    <div class="plat"><div class="dot" style="background:#e1306c;"></div>Instagram</div>
+    <div class="plat"><div class="dot" style="background:#0a66c2;"></div>LinkedIn</div>
+    <div class="plat"><div class="dot" style="background:#000;"></div>Threads</div>
+    <div class="plat"><div class="dot" style="background:#1da1f2;"></div>Twitter/X</div>
+    <div class="plat"><div class="dot" style="background:#ff0000;"></div>YouTube</div>
+    <div class="plat"><div class="dot" style="background:#0088cc;"></div>Telegram</div>
+    <div class="plat"><div class="dot" style="background:#5865f2;"></div>Discord</div>
+    <div class="plat"><div class="dot" style="background:#0057ff;"></div>Bluesky</div>
+    <div class="plat"><div class="dot" style="background:#e60023;"></div>Pinterest</div>
+    <div class="plat" style="background:#f5f0ff;"><div class="dot" style="background:#a855f7;"></div>+3 more</div>
+  </div>
+  <div class="bottom">Connect once → post everywhere forever, on autopilot</div>
+</div>
+</div>
+
+<!-- Slide 4 -->
+<div>
+<div class="slide-label">Slide 4 of 10 — How It Works</div>
+<div class="slide s4">
+  <h2>How it works — 3 steps</h2>
+  <div class="steps">
+    <div class="step-box">
+      <div class="step-num">1</div>
+      <div class="step-title">Connect</div>
+      <div class="step-desc">Link your Facebook, Instagram, LinkedIn and more in minutes</div>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step-box">
+      <div class="step-num">2</div>
+      <div class="step-title">Tell AI your business</div>
+      <div class="step-desc">Enter your business name, description and target audience</div>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step-box">
+      <div class="step-num">3</div>
+      <div class="step-title">Autopost</div>
+      <div class="step-desc">AI writes captions and posts automatically on your schedule</div>
+    </div>
+  </div>
+  <div style="margin-top:20px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);border-radius:10px;padding:12px;text-align:center;font-size:12px;color:#c084fc;">Setup takes under 5 minutes — no technical skills needed</div>
+</div>
+</div>
+
+<!-- Slide 5 — Bar Chart -->
+<div>
+<div class="slide-label">Slide 5 of 10 — ROI</div>
+<div class="slide s5">
+  <h2>What you save vs what you pay</h2>
+  <p>Monthly cost comparison — hiring vs Autopostleey</p>
+  <div style="display:flex;align-items:flex-end;gap:16px;height:150px;margin-top:8px;">
+    <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+      <div style="font-size:11px;font-weight:700;color:#dc2626;margin-bottom:4px;">$800</div>
+      <div style="width:100%;height:110px;background:linear-gradient(180deg,#fecaca,#f87171);border-radius:6px 6px 0 0;"></div>
+      <div style="font-size:9px;color:#888;margin-top:6px;text-align:center;">Social media<br>manager</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+      <div style="font-size:11px;font-weight:700;color:#d97706;margin-bottom:4px;">$200</div>
+      <div style="width:100%;height:28px;background:linear-gradient(180deg,#fde68a,#fbbf24);border-radius:6px 6px 0 0;"></div>
+      <div style="font-size:9px;color:#888;margin-top:6px;text-align:center;">Freelancer<br>(part-time)</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+      <div style="font-size:11px;font-weight:700;color:#7c3aed;margin-bottom:4px;">$19</div>
+      <div style="width:100%;height:4px;background:linear-gradient(180deg,#c4b5fd,#7c3aed);border-radius:6px 6px 0 0;"></div>
+      <div style="font-size:9px;color:#888;margin-top:6px;text-align:center;">Autopostleey<br>Growth</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+      <div style="font-size:11px;font-weight:700;color:#059669;margin-bottom:4px;">$0</div>
+      <div style="width:100%;height:2px;background:#d1fae5;border-radius:6px 6px 0 0;"></div>
+      <div style="font-size:9px;color:#888;margin-top:6px;text-align:center;">Autopostleey<br>Free plan</div>
+    </div>
+  </div>
+  <div style="margin-top:12px;background:#f5f0ff;border-radius:8px;padding:10px 14px;font-size:12px;color:#7c3aed;font-weight:600;">Save up to $781/month vs hiring a social media manager</div>
+</div>
+</div>
+
+<!-- Slide 6 -->
+<div>
+<div class="slide-label">Slide 6 of 10 — AI Features</div>
+<div class="slide s6">
+  <h2>Powered by AI — built for you</h2>
+  <div class="features-grid">
+    <div class="feat">
+      <div class="feat-icon">✍️</div>
+      <div class="feat-title">AI captions</div>
+      <div class="feat-desc">Writes selling captions for your products automatically</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🖼️</div>
+      <div class="feat-title">AI images</div>
+      <div class="feat-desc">Generates beautiful promo images for your offers</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📅</div>
+      <div class="feat-title">Auto-scheduler</div>
+      <div class="feat-desc">Posts at the best times on your preferred schedule</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📸</div>
+      <div class="feat-title">Product upload</div>
+      <div class="feat-desc">Upload photos → AI writes the captions → posts them</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🎬</div>
+      <div class="feat-title">Reels creator</div>
+      <div class="feat-desc">Turn your photos into Reels & Shorts automatically</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">6 content types</div>
+      <div class="feat-desc">Rotates products, promos, education, engagement posts</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Slide 7 -->
+<div>
+<div class="slide-label">Slide 7 of 10 — Before vs After</div>
+<div class="slide s7">
+  <h2>Before vs after Autopostleey</h2>
+  <div class="compare">
+    <div class="compare-col bad">
+      <h3>❌ Without Autopostleey</h3>
+      <div class="ci">😩 Spending hours writing posts</div>
+      <div class="ci">😩 Forgetting to post consistently</div>
+      <div class="ci">😩 Only on 1-2 platforms</div>
+      <div class="ci">😩 Paying $800/mo for help</div>
+      <div class="ci">😩 Running out of content ideas</div>
+    </div>
+    <div class="compare-col good">
+      <h3>✅ With Autopostleey</h3>
+      <div class="ci good-item">🚀 AI writes captions for you</div>
+      <div class="ci good-item">🚀 Posts daily automatically</div>
+      <div class="ci good-item">🚀 Active on 13 platforms</div>
+      <div class="ci good-item">🚀 Only $19/mo or free</div>
+      <div class="ci good-item">🚀 Never runs out of content</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Slide 8 — Growth line chart -->
+<div>
+<div class="slide-label">Slide 8 of 10 — Growth</div>
+<div class="slide s8">
+  <h2>Typical follower growth with consistent posting</h2>
+  <p>Businesses posting 1x/day grow 3× faster than those posting 2x/week</p>
+  <div style="position:relative;margin-top:8px;">
+    <svg width="100%" height="160" viewBox="0 0 520 160">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a855f7" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <text x="0" y="155" fill="#607a99" font-size="9">Jan</text>
+      <text x="88" y="155" fill="#607a99" font-size="9">Feb</text>
+      <text x="176" y="155" fill="#607a99" font-size="9">Mar</text>
+      <text x="264" y="155" fill="#607a99" font-size="9">Apr</text>
+      <text x="352" y="155" fill="#607a99" font-size="9">May</text>
+      <text x="440" y="155" fill="#607a99" font-size="9">Jun</text>
+      <line x1="0" y1="140" x2="520" y2="140" stroke="#1e2a40" stroke-width="1"/>
+      <line x1="0" y1="105" x2="520" y2="105" stroke="#1e2a40" stroke-width="0.5" stroke-dasharray="4"/>
+      <line x1="0" y1="70" x2="520" y2="70" stroke="#1e2a40" stroke-width="0.5" stroke-dasharray="4"/>
+      <line x1="0" y1="35" x2="520" y2="35" stroke="#1e2a40" stroke-width="0.5" stroke-dasharray="4"/>
+      <text x="0" y="143" fill="#607a99" font-size="8">0</text>
+      <text x="0" y="108" fill="#607a99" font-size="8">500</text>
+      <text x="0" y="73" fill="#607a99" font-size="8">1k</text>
+      <text x="0" y="38" fill="#607a99" font-size="8">1.5k</text>
+      <path d="M20,135 L110,128 L200,118 L290,105 L380,88 L480,55" fill="none" stroke="#607a99" stroke-width="1.5" stroke-dasharray="5"/>
+      <path d="M20,135 L480,55 L480,140 L20,140 Z" fill="url(#g2)" opacity="0.3"/>
+      <path d="M20,135 L110,122 L200,105 L290,80 L380,50 L480,18" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+      <path d="M20,135 L110,122 L200,105 L290,80 L380,50 L480,18 L480,140 L20,140 Z" fill="url(#g1)"/>
+      <circle cx="480" cy="18" r="4" fill="#a855f7"/>
+      <text x="490" y="22" fill="#a855f7" font-size="10" font-weight="bold">+312%</text>
+      <circle cx="480" cy="55" r="3" fill="#607a99"/>
+    </svg>
+    <div style="display:flex;gap:16px;margin-top:4px;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#9d78d4;"><div style="width:16px;height:2px;background:#a855f7;border-radius:1px;"></div>With Autopostleey</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#607a99;"><div style="width:16px;height:1px;background:#607a99;border-radius:1px;"></div>Manual posting</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Slide 9 -->
+<div>
+<div class="slide-label">Slide 9 of 10 — Pricing</div>
+<div class="slide s9">
+  <h2>Simple, honest pricing</h2>
+  <div class="plans">
+    <div class="plan-c">
+      <div class="badge">FREE FOREVER</div>
+      <div class="price">$0<span>/mo</span></div>
+      <div class="plan-name">Free Plan</div>
+      <div class="plan-feat">30 posts/month<br>All 13 platforms<br>AI captions<br>Bulk scheduler</div>
+    </div>
+    <div class="plan-c popular">
+      <div class="badge">⚡ MOST POPULAR</div>
+      <div class="price">$19<span>/mo</span></div>
+      <div class="plan-name">Growth Plan</div>
+      <div class="plan-feat">Unlimited posts<br>All 13 platforms<br>AI AutoPoster<br>Reels creator</div>
+    </div>
+    <div class="plan-c">
+      <div class="badge">AGENCIES</div>
+      <div class="price">$49<span>/mo</span></div>
+      <div class="plan-name">Agency Plan</div>
+      <div class="plan-feat">5 businesses<br>Team members<br>Everything in Growth<br>Priority support</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:12px;font-size:11px;color:#607a99;">No contracts · Cancel anytime · Setup in 5 minutes</div>
+</div>
+</div>
+
+<!-- Slide 10 -->
+<div>
+<div class="slide-label">Slide 10 of 10 — CTA</div>
+<div class="slide s10">
+  <h2>Start posting on autopilot<br>today — free</h2>
+  <p>Join businesses that never miss a post again</p>
+  <div class="cta-btn">Try Autopostleey Free →</div>
+  <div class="sub">autopostleey.com · No credit card required</div>
+</div>
+</div>
+
+</div>
